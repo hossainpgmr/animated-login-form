@@ -1,0 +1,161 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #222;
+  min-height: 100vh;
+}
+:root {
+  --animation-color: ;
+}
+@property --animation-color {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+.box {
+  position: relative;
+  width: 400px;
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: repeating-conic-gradient(
+    from var(--animation-color),
+    #01dbc2 0%,
+    #01dbc2 10%,
+    transparent 10%,
+    transparent 50%
+  );
+  animation: animate 6s linear infinite;
+}
+@keyframes animate {
+  0% {
+    --animation-color: 0deg;
+  }
+  100% {
+    --animation-color: 360deg;
+  }
+}
+
+.box::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: repeating-conic-gradient(
+    from var(--animation-color),
+    #01dbc2 0%,
+    #01dbc2 10%,
+    transparent 10%,
+    transparent 50%
+  );
+  animation-delay: -1.5s;
+}
+.box::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border: 20px solid #222;
+  background: #303030;
+}
+form {
+  z-index: 1000;
+}
+form h2 {
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 20px;
+  padding-top: 60px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  width: 100%;
+  text-transform: uppercase;
+}
+.inputbtx {
+  position: relative;
+  margin-bottom: 40px;
+  width: 240px;
+}
+.inputbtx span {
+  position: absolute;
+  inset: -2px;
+  background: #f00;
+  z-index: 1;
+}
+.inputbtx span::before {
+  content: "";
+  inset: -2px;
+  position: absolute;
+  background: repeating-conic-gradient(
+    from var(--animation-color),
+    #01dbc2 0%,
+    #01dbc2 10%,
+    transparent 10%,
+    transparent 50%
+  );
+  animation: animate 6s linear infinite;
+  box-shadow: 0 0 0 2px #006666;
+}
+.inputbtx:nth-child(2) span::before {
+  animation-delay: -1.5s;
+}
+.inputbtx span::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #292929;
+}
+.inputbtx input {
+  position: relative;
+  z-index: 10000;
+  outline: none;
+  border: none;
+  width: 100%;
+  padding: 8px 14px;
+  background: transparent;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: white;
+}
+.inputbtx::placeholder {
+  color: white;
+  opacity: 0.4;
+}
+.inputbtx input[type="submit"] {
+  background: #01dbc2;
+  cursor: pointer;
+  box-shadow: 0 0 0 4px #01dbc2;
+  width: 100%;
+  font-weight: 500;
+  color: #292929;
+  filter: drop-shadow(0 0 10px #01dbc298);
+}
+.group {
+  position: relative;
+  top: -10px;
+  padding-bottom: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+.group a {
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  color: #fff7;
+  text-transform: uppercase;
+  letter-spacing: 0.1px;
+  font-size: 0.75em;
+}
+.group a:nth-child(2),
+.group a:hover {
+  color: #01dbc2;
+  filter: drop-shadow(0 0 10px #01dbc298);
+}
